@@ -11,7 +11,13 @@ public class ArrayTasks {
      * Return a String[] array that will list all the seasons of the year, starting with winter.
      */
     public String[] seasonsArray() {
+        String[] seansons = new String[4];
+        seansons[0]="winter";
+        seansons[1]="spring";
+        seansons[2]="summer";
+        seansons[3]="autumn";
 
+        return seansons;
     }
 
     /**
@@ -25,7 +31,11 @@ public class ArrayTasks {
      * length = 5  -> [1, 2, 3, 4, 5]
      */
     public int[] generateNumbers(int length) {
+        int[] numbers = new int[length];
+        for(int i=1;i<=length;i++)
+            numbers[i-1]=i;
 
+        return numbers;
     }
 
     /**
@@ -37,7 +47,11 @@ public class ArrayTasks {
      * arr = [5, -3, -4] -> sum = -2
      */
     public int totalSum(int[] arr) {
+        int n = arr.length, sum=0;
+        for(int i=0;i<n;i++)
+            sum+=arr[i];
 
+        return sum;
     }
 
     /**
@@ -50,7 +64,12 @@ public class ArrayTasks {
      * arr = [5, -3, -4],   number = 10    ->  -1
      */
     public int findIndexOfNumber(int[] arr, int number) {
-
+        int n = arr.length;
+        for(int i=0;i<n;i++)
+            if(arr[i]==number) {
+                return i;
+            }
+        return -1;
     }
 
     /**
@@ -63,7 +82,13 @@ public class ArrayTasks {
      * arr = ["pineapple", "apple", "pen"] -> ["pen", "apple", "pineapple"]
      */
     public String[] reverseArray(String[] arr) {
+        int n = arr.length;
+        String[] reverseArr = new String[n];
 
+        for(int i=n-1,j=0;i>=0;i--,j++)
+            reverseArr[j]=arr[i];
+
+        return reverseArr;
     }
 
     /**
@@ -78,9 +103,19 @@ public class ArrayTasks {
      * arr = [1, 2]         -> [1, 2]
      */
     public int[] getOnlyPositiveNumbers(int[] arr) {
-
+        int n = arr.length, k=0;
+        for(int i=0;i<n;i++)
+            if(arr[i]>0)
+                k++;
+        int[] posNumbers = new int[k];
+        for(int i=0,j=-1;i<n;i++) {
+           if(arr[i]>0) {
+               j++;
+               posNumbers[j]=arr[i];
+           }
+        }
+        return posNumbers;
     }
-
     /**
      * Return a sorted, ragged, two-dimensional int[][] array following these rules:
      * Incoming one-dimensional arrays must be arranged in ascending order of their length;
@@ -92,6 +127,6 @@ public class ArrayTasks {
      * arr = [[5, 4], [7]]       -> [[7], [4, 5]]
      */
     public int[][] sortRaggedArray(int[][] arr) {
-
+        return arr;
     }
 }
