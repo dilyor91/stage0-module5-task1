@@ -126,7 +126,44 @@ public class ArrayTasks {
      * arr = [[3, 1, 2,], [3,2]] -> [[2, 3], [1, 2, 3]]
      * arr = [[5, 4], [7]]       -> [[7], [4, 5]]
      */
-    public int[][] sortRaggedArray(int[][] arr) {
-        return arr;
+
+    public static int[] sort(int[] array) {
+        int n = array.length;
+        for(int i=0;i<n;i++)
+            for(int j=0;j<i;j++){
+                if(array[j] > array[j+1]) {
+                    int temp = array[j+1];
+                    array[j+1] = array[j];
+                    array[j] = temp;
+                }
+            }
+        return array;
+    }
+    public static int[][] sortRaggedArray(int[][] arr) {
+        int n = arr.length;
+        for(int i=0;i<n;i++)
+        for(int j=0;j<i;j++){
+            if(arr[j].length > arr[j+1].length) {
+                int[] temp = arr[j+1];
+                arr[j+1] = arr[j];
+                arr[j] = temp;
+            }
+        }
+
+        int[][] newarr = new int[n][];
+        for(int i=0;i<n;i++)
+            newarr[i]=sort(arr[i]);
+
+        for(int i=0;i<n;i++) {
+            int k = newarr[i].length;
+            for(int j=0;j<k;j++)
+                System.out.println(newarr[i][j]);
+        }
+        return newarr;
+    }
+
+    public static void main(String[] args) {
+        int [][] arr= new int[][]{{3,1,2},{3,2}};
+        sortRaggedArray(arr);
     }
 }
