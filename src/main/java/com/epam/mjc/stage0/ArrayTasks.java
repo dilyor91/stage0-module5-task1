@@ -127,7 +127,7 @@ public class ArrayTasks {
      * arr = [[5, 4], [7]]       -> [[7], [4, 5]]
      */
 
-    public static int[] sort(int[] array) {
+    /*public static int[] sort(int[] array) {
         int n = array.length;
         for(int i=0;i<n;i++)
             for(int j=0;j<i;j++){
@@ -160,10 +160,41 @@ public class ArrayTasks {
                 System.out.println(newarr[i][j]);
         }
         return newarr;
+    }*/
+    public int[][] sortRaggedArray(int[][] arr) {
+        boolean isSorted = false;
+        int[] temp;
+        while (!isSorted) {
+            isSorted = true;
+            for (int i = 0; i < arr.length - 1; i++) {
+                if (arr[i].length > arr[i + 1].length) {
+                    isSorted = false;
+                    temp = arr[i];
+                    arr[i] = arr[i + 1];
+                    arr[i + 1] = temp;
+                }
+            }
+        }
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = sort(arr[i]);
+        }
+        return arr;
     }
 
-    public static void main(String[] args) {
-        int [][] arr= new int[][]{{3,1,2},{3,2}};
-        sortRaggedArray(arr);
+    public static int[] sort(int[] arr) {
+        boolean isSorted = false;
+        int temp;
+        while (!isSorted) {
+            isSorted = true;
+            for (int i = 0; i < arr.length - 1; i++) {
+                if (arr[i] > arr[i + 1]) {
+                    isSorted = false;
+                    temp = arr[i];
+                    arr[i] = arr[i + 1];
+                    arr[i + 1] = temp;
+                }
+            }
+        }
+        return arr;
     }
 }
